@@ -1,0 +1,28 @@
+---
+- name: Deploy Docker Containers
+  hosts: all
+  become: yes
+
+  tasks:
+    - name: Clone Git Repository
+      git:
+        repo: https://github.com/Naresh100893/amazon-image.git
+        dest: /home/ubuntu/amz-image
+
+    - name: Build Docker Image
+      docker_image:
+        
+        name: amz-docker-image
+        source: build
+        build: 
+          path: /home/ubuntu/amz-image
+        tag: latest
+    - name: Run Docker Container
+      docker_container:
+        name: amazon-container
+        image: amz-docker-image
+        state: started
+        interactive: yes
+        tty: yes
+        ports:
+          - "8090:8070"  # Example port mapping
