@@ -1,0 +1,11 @@
+pipeline {
+	agent any
+	
+	stages{
+		stage('code') {
+			steps {
+				git branch: 'main', url: 'https://github.com/Naresh100893/ansi-jenk.git'
+			}
+		}
+	}
+}
