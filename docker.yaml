@@ -1,13 +1,10 @@
 ---
-- name: Deploy Docker Containers
+- name: Copy Files Playbook
   hosts: servers
-  become: yes
+  become: yes  # If you need sudo privileges to copy to certain directories
 
   tasks:
-    - name: Clone Git Repository
-      git:
-        repo: https://github.com/Naresh100893/ansi-jenk.git
-        dest: /var/lib/jenkins/workspace/third-pipeline
-
-     
-  
+    - name: Copy files to remote server
+      copy:
+        src: /var/lib/jenkins/workspace/third-pipeline  # Specify the path of the local file
+        dest: . # Specify the destination path on the remote server
