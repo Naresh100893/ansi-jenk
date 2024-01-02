@@ -9,22 +9,5 @@
         repo: https://github.com/Naresh100893/ansi-jenk.git
         dest: /var/lib/jenkins/workspace/third-pipeline
 
-      - name: Build Docker Image
-      docker_image:
-        name: amz-docker-image
-        source: build
-        build: 
-          path: /var/lib/jenkins/workspace/third-pipeline
-        tag: latest
-
-    - name: Run Docker Container
-      docker_container:
-        name: amazon-container
-        image: amz-docker-image
-        state: started
-        interactive: yes
-        tty: yes
-        ports:
-          - "8090:8070"  # Example port mapping   
-
+     
   
