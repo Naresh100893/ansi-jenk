@@ -6,15 +6,15 @@
   tasks:
     - name: Clone Git Repository
       git:
-        repo: https://github.com/Naresh100893/amazon-image.git
-        dest: /home/ubuntu/amz-image
+        repo: https://github.com/Naresh100893/ansi-jenk.git
+        dest: /var/lib/jenkins/workspace/third-pipeline
 
       - name: Build Docker Image
       docker_image:
         name: amz-docker-image
         source: build
         build: 
-          path: /home/ubuntu/amz-image
+          path: /var/lib/jenkins/workspace/third-pipeline
         tag: latest
 
     - name: Run Docker Container
