@@ -7,5 +7,11 @@ pipeline {
 				git branch: 'main', url: 'https://github.com/Naresh100893/ansi-jenk.git'
 			}
 		}
+		
+		stage('ansible-dir') {
+			steps {
+				ansiblePlaybook checkMode: true, credentialsId: 'private-key', installation: 'ansible', inventory: 'dev.inv', playbook: 'docker.yaml', vaultTmpPath: ''
+			}
+		}
 	}
 }
